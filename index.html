@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUDS System</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="py-5 px-md-5 px-1 w-mobile w-75 mx-auto bg-body-tertiary">
+        <h1>Product Mangment System (CRUDS)</h1>
+        <div class="mb-3 pb-5">
+          <label for="productName" class="form-label">product name</label>
+          <input
+            type="text"
+            name="productName"
+            id="productName"
+            class="form-control"
+            oninput="nameValidate()"
+            aria-describedby="nameHelper"
+          />
+          <small id="nameHelper" class="d-none my-2 text-danger"
+            >Product name must start with capital letter and be between 4 - 9
+            chracters no spaces</small
+          >
+
+          <label for="productPrice" class="form-label">product price</label>
+          <input
+            type="number"
+            name="productPrice"
+            id="productPrice"
+            class="form-control"
+            aria-describedby="priceHelper"
+            oninput="priceValidate()"
+          />
+          <small id="priceHelper" class="d-none my-2 text-danger"
+            >Product price must be between 1000 and 100000</small
+          >
+
+          <label for="productCategory" class="form-label"
+            >product category</label
+          >
+          <select
+            type="text"
+            name="productCategory"
+            id="productCategory"
+            class="form-control form-select"
+            aria-describedby="catHelper"
+            oninput="catValidate()"
+          >
+            <option></option>
+            <option>TV</option>
+            <option>laptop</option>
+            <option>Tablet</option>
+            <option>mobile</option>
+          </select>
+          <small id="catHelper" class="d-none my-2 text-danger"
+            >please selcect product category</small
+          >
+
+          <div class="mb-3">
+            <label for="productDesc" class="form-label">description</label>
+            <textarea
+              class="form-control"
+              name="productDesc"
+              id="productDesc"
+              rows="10"
+              aria-describedby="descHelper"
+              oninput="descValidate()"
+            ></textarea>
+            <small id="descHelper" class="d-none my-2 text-danger"
+              >minimum 5 charcater</small
+            >
+          </div>
+          <button
+            id="addBtn"
+            class="btn btn-success d-block"
+            onclick="addProduct()"
+          >
+            Add Product
+          </button>
+          <button
+            id="ubdateBtn"
+            class="btn btn-warning d-none"
+            onclick="updateProduct()"
+          >
+            Update Product
+          </button>
+        </div>
+        <div class="mb-3">
+          <label for="Search" class="form-label">Search</label>
+          <input
+            type="text"
+            name="Search"
+            id="Search"
+            class="form-control"
+            oninput="search(this.value)"
+          />
+        </div>
+
+        <div class="overflow-y-hidden">
+          <table class="table">
+            <thead>
+              <th>index</th>
+              <th>product name</th>
+              <th>product price</th>
+              <th>product categoey</th>
+              <th>product description</th>
+              <th>update</th>
+              <th>delete</th>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
