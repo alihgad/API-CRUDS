@@ -5,7 +5,7 @@ import connect from './../DB/connection.js';
 
 export const getData = (req ,res)=>{
     connect.execute(`select * from items`,(err,result)=>{
-        res.json({result});
+       return res.json({result});
     })
 }
 
