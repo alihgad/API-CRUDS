@@ -1,6 +1,6 @@
 import express from 'express'
-import cors from 'cors'
 import router from './items/items.routes.js'
+var cors = require('cors')
 const app = express()
 const port = 3000 || process.env.PORT
 
