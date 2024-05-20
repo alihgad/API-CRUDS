@@ -4,7 +4,8 @@ import connect from './../DB/connection.js';
 //=============== get data =============================
 
 export const getData = (req ,res)=>{
-    connect.execute(`select * from items`,(err,result)=>{
+    connect.execute(` select * from items `,(err,result)=>{
+        if(err) return res.json({msg:'query error',error:err})
        return res.json({result});
     })
 }
@@ -31,7 +32,7 @@ export const addData = (req ,res)=>{
 
 export const updateData = (req ,res)=>{
     const {id , name , price , category , description} = req.body
-    let query = `update set items name = '${name}' price = '${price}' category = '${category}' description = '${description}' where id = '${id}'`
+    let query = `UPDATE items set name = '${name}' , price = '${price}' , category = '${category}' , description = '${description}' where id = '${id}'`
     connect.execute(query,(err,result)=>{
         if (err){
             return res.status(500).json({msg: 'query error' , err})
@@ -39,9 +40,9 @@ export const updateData = (req ,res)=>{
 
         console.log(result);
         if(result.affectedRows > 0){
-            res.status(200).json({msg:'done'});
+            return res.status(200).json({msg:'done'});
         }else{
-            res.status(500).json({msg:'error'});
+            return res.status(500).json({msg:'error'});
         }
     })
 
